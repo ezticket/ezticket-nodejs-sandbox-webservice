@@ -3,7 +3,9 @@ const router = express.Router()
 const post = require('../models/post.model')
 const m = require('../helpers/middlewares')
 
-/* All posts */
+/**
+ * All posts
+ */
 router.get('/', async (req, res) => {
     await post.getPosts()
     .then(posts => res.json(posts))
@@ -16,7 +18,9 @@ router.get('/', async (req, res) => {
     })
 })
 
-/* A post by id */
+/**
+ * A post by id
+ */
 router.get('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
@@ -31,7 +35,9 @@ router.get('/:id', m.mustBeInteger, async (req, res) => {
     })
 })
 
-/* Insert a new post */
+/**
+ * Insert a new post
+ * */
 router.post('/', m.checkFieldsPost, async (req, res) => {
     await post.insertPost(req.body)
     .then(post => res.status(201).json({
@@ -41,7 +47,10 @@ router.post('/', m.checkFieldsPost, async (req, res) => {
     .catch(err => res.status(500).json({ message: err.message }))
 })
 
-/* Update a post */
+/**
+ *  Update a post
+ * @version 1.0.0
+ * */
 router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
     const id = req.params.id
 
@@ -58,7 +67,8 @@ router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
     })
 })
 
-/* Delete a post */
+/**
+ *  Delete a post */
 router.delete('/:id', m.mustBeInteger, async (req, res) => {
     const id = req.params.id
 
