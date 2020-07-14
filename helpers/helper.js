@@ -1,5 +1,9 @@
 const fs = require('fs');
 
+/**
+ *
+ * @param {*} array
+ */
 const getNewId = (array) => {
 	if (array.length > 0) {
 		return array[array.length - 1].id + 1;
@@ -10,6 +14,11 @@ const getNewId = (array) => {
 
 const newDate = () => new Date().toString();
 
+/**
+ *
+ * @param {*} array
+ * @param {*} id
+ */
 function mustBeInArray(array, id) {
 	return new Promise((resolve, reject) => {
 		const row = array.find(r => r.id == id);
@@ -23,6 +32,11 @@ function mustBeInArray(array, id) {
 	});
 }
 
+/**
+ *
+ * @param {*} filename
+ * @param {*} content
+ */
 function writeJSONFile(filename, content) {
 	fs.writeFileSync(filename, JSON.stringify(content), 'utf8', (err) => {
 		if (err) {
@@ -35,7 +49,7 @@ function writeJSONFile(filename, content) {
  * @author ezTicket <info@inzonesoft.com>
  * @param {number} parametro - Primer parametro
  * @param {number} segundoParametro - Este es el segundo parametro
- * @return {number}
+ * @return {number} suma - Suma de parametros
  * @example
  * estoEsUnaPrueba(1,2) => 3
  */
