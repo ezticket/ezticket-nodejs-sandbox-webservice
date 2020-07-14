@@ -48,8 +48,9 @@ function insertPost(newPost) {
     })
 }
 
+
 /**
- * @description Actualizar
+ * @description Actualizar.
  * @param {*} id
  * @param {*} newPost
  */

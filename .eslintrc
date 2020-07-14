@@ -24,10 +24,11 @@
         "browser": true
     },
     "parserOptions": {
+        "ecmaVersion": 2017,
         "sourceType": "module",
         "ecmaFeatures": {
-            "jsx": true,
-            "modules": true
+            "modules": true,
+            "experimentalObjectRestSpread": true
         }
     }
 }
