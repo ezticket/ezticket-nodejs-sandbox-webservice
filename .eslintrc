@@ -5,7 +5,13 @@
             "error",
             "tab"
         ],
-        // "quotes": ["error","double"],
+        "quotes": [
+            "error",
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
         "semi": [
             "error",
             "always"
