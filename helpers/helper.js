@@ -2,6 +2,7 @@ const fs = require('fs');
 
 /**
  * @desc Nuevo Identificador
+ * Retornar un nuevo identificador
  * @param {*} array
  */
 const getNewId = (array) => {
@@ -15,7 +16,7 @@ const getNewId = (array) => {
 const newDate = () => new Date().toString();
 
 /**
- *
+ * @description Verificar Identificador
  * @param {*} array
  * @param {*} id
  */
@@ -33,7 +34,7 @@ function mustBeInArray(array, id) {
 }
 
 /**
- *
+ * @desc Escribir JSON
  * @param {*} filename
  * @param {*} content
  */
@@ -53,8 +54,7 @@ function writeJSONFile(filename, content) {
  * @example
  * estoEsUnaPrueba(1,2) => 3
  */
-function estoEsUnaPrueba(parametro, segundoParametro)
-{
+function estoEsUnaPrueba(parametro, segundoParametro) {
 	return parametro + segundoParametro;
 }
 
