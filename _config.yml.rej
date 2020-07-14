@@ -1,0 +1,6 @@
+diff a/_config.yml b/_config.yml	(rejected hunks)
+@@ -0,0 +1,3 @@
++theme: jekyll-theme-midnight
++title: [The title of your site]
++description: [A short description of your site's purpose]
+\ No newline at end of file
