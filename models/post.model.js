@@ -3,7 +3,7 @@ const filename = './data/posts.json'
 const helper = require('../helpers/helper.js')
 
 /**
- * Test 1
+ * @description Test 1
  */
 function getPosts() {
     return new Promise((resolve, reject) => {
@@ -31,7 +31,8 @@ function getPost(id) {
 }
 
 /**
- * Test 3
+ *
+ * @param {*} newPost
  */
 function insertPost(newPost) {
     return new Promise((resolve, reject) => {
@@ -48,7 +49,7 @@ function insertPost(newPost) {
 }
 
 /**
- * ESTA COJN PARMETROS
+ * @description Actualizar
  * @param {*} id
  * @param {*} newPost
  */

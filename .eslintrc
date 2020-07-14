@@ -1,6 +1,6 @@
 {
     "rules": {
-        // enable additional rules
+        "no-unused-vars": "warn",
         "indent": [
             "error",
             "tab"
@@ -16,15 +16,18 @@
             "error",
             "always"
         ],
-        // override default options for rules from base configurations
-        // "comma-dangle": ["error", "always"],
-        // disable rules from base configurations
         "no-console": "off"
     },
-    "parserOptions": {
-        "ecmaVersion": 6
-    },
     "env": {
-        "es6": true
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
     }
 }
