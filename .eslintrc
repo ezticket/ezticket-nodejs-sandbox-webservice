@@ -1,10 +1,19 @@
 {
     "rules": {
+        // enable additional rules
         "indent": [
             "error",
             "tab"
         ],
-        "semi": "error"
+        // "quotes": ["error","double"],
+        "semi": [
+            "error",
+            "always"
+        ],
+        // override default options for rules from base configurations
+        // "comma-dangle": ["error", "always"],
+        // disable rules from base configurations
+        "no-console": "off"
     },
     "parserOptions": {
         "ecmaVersion": 6

@@ -30,6 +30,19 @@ function writeJSONFile(filename, content) {
 		}
 	});
 }
+/**
+ * Suma de parametros
+ * @author ezTicket <info@inzonesoft.com>
+ * @param {number} parametro - Primer parametro
+ * @param {number} segundoParametro - Este es el segundo parametro
+ * @return {number}
+ * @example
+ * estoEsUnaPrueba(1,2) => 3
+ */
+function estoEsUnaPrueba(parametro, segundoParametro)
+{
+	return parametro + segundoParametro;
+}
 
 module.exports = {
 	getNewId,
