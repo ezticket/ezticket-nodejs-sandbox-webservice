@@ -20,7 +20,9 @@ configuración inicial de la herramienta:
 | **Introducción e instalación** | [Document your Javascript code with JSDoc](https://dev.to/paulasantamaria/document-your-javascript-code-with-jsdoc-2fbf) |
 | **Personalización**            | [docdash](https://github.com/clenemt/docdash)                                                                            |
 
-
+```console
+jsdoc -c .jsdoc.json
+```
 ### Módulo de log.
 
 Las opciones más populares a tener en cuenta fueron:
@@ -31,14 +33,3 @@ Las opciones más populares a tener en cuenta fueron:
 | debug   | <https://www.npmjs.com/package/debug>   |     35.396 |
 | winston | <https://www.npmjs.com/package/winston> |     12.381 |
 | log4js  | <https://www.npmjs.com/package/log4js>  |      2.674 |
-
-
-Section Title
-=============
-The Common Denominator
-======================
-
-Subsection Subtitle
--------------------
-Titles and Section headers
---------------------------
