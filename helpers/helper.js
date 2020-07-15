@@ -2,6 +2,7 @@ const fs = require('fs');
 
 /**
  * @desc Nuevo Identificador
+ * Retornar un nuevo identificador
  * @param {*} array
  */
 const getNewId = (array) => {
