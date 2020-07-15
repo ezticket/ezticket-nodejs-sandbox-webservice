@@ -1,10 +1,13 @@
-[logo]: https://raw.githubusercontent.com/ezticket/ezticket-nodejs-sandbox-webservice/e0a2c320d744724fb6e2fc80d16ea4c9d65dc5d2/assets/logo.png "ezticket logo"
-
 # ezTicket InZone Web Service
 
-|                | ezticket-nodejs-sandbox-webservice |                   |
-| -------------- | :--------------------------------: | ----------------: |
-| Descripción... |                                    | ![alt text][logo] |
+#### ezticket-nodejs-sandbox-webservice
+
+<table border="0" width="90%" ID="table">
+    <tr width="30%">
+        <td>Descripción...</td>
+        <td> <img align="right" height="100%" src="https://raw.githubusercontent.com/ezticket/ezticket-nodejs-sandbox-webservice/e0a2c320d744724fb6e2fc80d16ea4c9d65dc5d2/assets/logo.png"> </td>
+    </tr>
+</table>
 
 ## Paquetes NPM Utilizados
 
@@ -42,6 +45,7 @@ Las opciones más populares a tener en cuenta fueron:
 | winston | <https://www.npmjs.com/package/winston> |     12.381 |
 | log4js  | <https://www.npmjs.com/package/log4js>  |      2.674 |
 
+<br/><br/>
 
 ----
 
