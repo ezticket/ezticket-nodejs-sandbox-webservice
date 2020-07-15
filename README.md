@@ -20,16 +20,16 @@ de software. Es de código libre, ampliamente utilizado en la industria y
 considerado como el estándar deflactó de la documentación en código.
 
 A continuación, comparto dos links muy interesantes donde nos basamos para la
-configuración inicial de la herramienta: \| \| \| \|
------------------------------- \|
-------------------------------------------------------------------------------------------------------------------------
-\| \| **Introducción e instalación** \| [Document your Javascript code with
-JSDoc](https://dev.to/paulasantamaria/document-your-javascript-code-with-jsdoc-2fbf)
-\| \| **Personalización** \| [docdash](https://github.com/clenemt/docdash) \|
+configuración inicial de la herramienta:
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                                |                                                                                                                           |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------- |
+| **Introducción e instalación** | [Document your Javascript code with  JSDoc](https://dev.to/paulasantamaria/document-your-javascript-code-with-jsdoc-2fbf) |
+| **Personalización**            | [docdash](https://github.com/clenemt/docdash)                                                                             |
+
+```
 jsdoc -c .jsdoc.json
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ### Módulo de log.
 
@@ -43,5 +43,6 @@ Las opciones más populares a tener en cuenta fueron:
 | log4js  | <https://www.npmjs.com/package/log4js>  |      2.674 |
 
 
-================================================================
-**@ezTicket** :+1: This PR looks great - it's ready to merge! :shipit:
+----
+
+**@ezTicket** :+1:
