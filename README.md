@@ -5,7 +5,7 @@
 <table border="0" width="90%" ID="table">
     <tr width="30%">
         <td>Descripción...</td>
-        <td> <img align="right" height="100%" src="https://raw.githubusercontent.com/ezticket/ezticket-nodejs-sandbox-webservice/e0a2c320d744724fb6e2fc80d16ea4c9d65dc5d2/assets/logo.png"> </td>
+        <td> <img align="right" height="100%" src="https://raw.githubusercontent.com/ezticket/ezticket-nodejs-sandbox-webservice/2b3c595a674b84b22754aafc0636dc8611e8e58e/assets/ezyicket-logo-t-bg.png"> </td>
     </tr>
 </table>
 
