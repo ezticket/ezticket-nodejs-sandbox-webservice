@@ -1,6 +1,7 @@
 {
   "name": "express-app-one",
   "version": "0.0.1",
+  "main": "app.js",
   "private": false,
   "scripts": {
     "start": "node ./bin/www",
