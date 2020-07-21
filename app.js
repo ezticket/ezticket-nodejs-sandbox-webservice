@@ -35,6 +35,6 @@ app
     res.status(err.status || 500);
     res.render("error");
   })
-  .listen(3000);
+  .listen(process.env.PORT);
 
 module.exports = app;
