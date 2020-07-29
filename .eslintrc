@@ -1,9 +1,10 @@
 {
     "rules": {
+        "prefer-promise-reject-errors": "off",
         "no-unused-vars": "warn",
         "indent": [
             "error",
-            "tab"
+            4
         ],
         "quotes": [
             "error",
