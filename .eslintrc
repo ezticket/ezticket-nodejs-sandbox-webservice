@@ -1,6 +1,8 @@
 {
     "rules": {
+        "handle-callback-err": "off",
         "prefer-promise-reject-errors": "off",
+        "no-undef": "off",
         "no-unused-vars": "warn",
         "indent": [
             "error",
