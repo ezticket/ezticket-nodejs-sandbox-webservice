@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 /**
  * A post by id
  */
-router.get('/:id', m.mustBeInteger, async (req, res) => {
+router.get('/:id', m.checkNumericId, async (req, res) => {
     const id = req.params.id;
 
     await post.getPost(id)
@@ -51,7 +51,7 @@ router.post('/', m.checkFieldsPost, async (req, res) => {
  *  Update a post
  * @version 1.0.0
  * */
-router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
+router.put('/:id', m.checkNumericId, m.checkFieldsPost, async (req, res) => {
     const id = req.params.id;
 
     await post.updatePost(id, req.body)
@@ -69,7 +69,7 @@ router.put('/:id', m.mustBeInteger, m.checkFieldsPost, async (req, res) => {
 
 /**
  *  Delete a post */
-router.delete('/:id', m.mustBeInteger, async (req, res) => {
+router.delete('/:id', m.checkNumericId, async (req, res) => {
     const id = req.params.id;
 
     await post.deletePost(id)
