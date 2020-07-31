@@ -6,14 +6,14 @@ const url = 'http://localhost:3000/api/v1/tickets';
 
 chai.use(chaiHttp);
 
-describe('Insert in json data: ', () => {
-    it('should insert an element', (done) => {
+describe('Funcionalidad Scan: ', () => {
+    it('grabar un scan', (done) => {
         chai.request(url)
-            .post('/')
-            .send({ title: 'A new test', content: 'New content', tags: ['t1', 't2'] })
+            .post('/eqr4t34sfdsfsgf/scan')
+            .send({ id: 2, name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
                 console.log(res.body);
-                expect(res).to.have.status(201);
+                expect(res).to.have.status(200);
                 done();
             });
     });
