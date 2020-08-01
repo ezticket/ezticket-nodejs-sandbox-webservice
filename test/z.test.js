@@ -6,19 +6,6 @@ const url = 'http://localhost:3000/api/v1/tickets';
 
 chai.use(chaiHttp);
 
-describe('Funcionalidad Scan: ', () => {
-    it('grabar un scan', (done) => {
-        chai.request(url)
-            .post('/eqr4t34sfdsfsgf/scan')
-            .send({ id: 2, name: 'Drink', createdAt: '01-01-2020' })
-            .end(function (err, res) {
-                console.log(res.body);
-                expect(res).to.have.status(200);
-                done();
-            });
-    });
-});
-
 describe('Simple Test', () => {
     it('should return 2', () => {
         assert.strictEqual(1 + 1, 2);

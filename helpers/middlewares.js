@@ -18,7 +18,18 @@ function checkFieldsPost (req, res, next) {
     }
 }
 
+function checkFieldsScan (req, res, next) {
+    const { id, name, createdAt } = req.body;
+
+    if (id && name && createdAt) {
+        next();
+    } else {
+        res.status(400).json({ message: 'Parameters are missing' });
+    }
+}
+
 module.exports = {
     checkNumericId,
-    checkFieldsPost
+    checkFieldsPost,
+    checkFieldsScan
 };
