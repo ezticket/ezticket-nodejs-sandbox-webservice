@@ -4,7 +4,7 @@ var path = require('path');
 var morganLoger = require('morgan');
 
 var indexRouter = require('./routes/index.routes');
-var ticketRouter = require('./routes/post.routes');
+var ticketRouter = require('./routes/ticket.routes');
 
 var app = express();
 
@@ -30,7 +30,7 @@ app.use(function (err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('err or');
-}).listen(process.env.PORT);
+    res.json('err or');
+}).listen(process.env.PORT || 3000);
 
 module.exports = app;

@@ -1,10 +1,4 @@
-/**
- *
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
-function mustBeInteger (req, res, next) {
+function checkNumericId (req, res, next) {
     const id = req.params.id;
 
     if (!Number.isInteger(parseInt(id))) {
@@ -13,12 +7,7 @@ function mustBeInteger (req, res, next) {
         next();
     }
 }
-/**
- *Probando uno dos tre
- * @param {*} req
- * @param {*} res
- * @param {*} next
- */
+
 function checkFieldsPost (req, res, next) {
     const { title, content, tags } = req.body;
 
@@ -29,10 +18,18 @@ function checkFieldsPost (req, res, next) {
     }
 }
 
-/**
- *Exportar
- */
+function checkFieldsScan (req, res, next) {
+    const { id, name, createdAt } = req.body;
+
+    if (id && name && createdAt) {
+        next();
+    } else {
+        res.status(400).json({ message: 'Parameters are missing' });
+    }
+}
+
 module.exports = {
-    mustBeInteger,
-    checkFieldsPost
+    checkNumericId,
+    checkFieldsPost,
+    checkFieldsScan
 };
