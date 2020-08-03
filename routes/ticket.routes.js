@@ -8,7 +8,7 @@ const mid = require('../helpers/middlewares');
 /**
  * All scans
  */
-router.get('/:ticketid/getScans', async (req, res) => {
+router.get('/:ticketid/scans', async (req, res) => {
     const ticketid = req.params.ticketid;
 
     await scan.getScans(ticketid)
@@ -25,7 +25,7 @@ router.get('/:ticketid/getScans', async (req, res) => {
 /**
  * Insert a scan
  */
-router.post('/:ticketid/scan', mid.checkFieldsScan, async (req, res) => {
+router.post('/:ticketid/scans', mid.checkFieldsScan, async (req, res) => {
     const ticketid = req.params.ticketid;
 
     await ticket.scan(ticketid, req.body)
@@ -44,7 +44,7 @@ router.post('/:ticketid/scan', mid.checkFieldsScan, async (req, res) => {
 /**
  * All owners
  */
-router.get('/:ticketid/getOwners', async (req, res) => {
+router.get('/:ticketid/owners', async (req, res) => {
     const ticketid = req.params.ticketid;
 
     await owner.getOwners(ticketid)
@@ -55,6 +55,40 @@ router.get('/:ticketid/getOwners', async (req, res) => {
             } else {
                 res.status(500).json({ message: err.message });
             }
+        });
+});
+
+/**
+ * Insert a list of tickets purchased
+ */
+router.post('/sell', mid.checkFieldsSell, async (req, res) => {
+    await ticket.sell(req.body)
+        .then(data => res.json({
+            message: 'Venta registrada correctamente',
+            content: data
+        }))
+        .catch(err => {
+            if (err.status) {
+                res.status(err.status).json({ message: err.message });
+            }
+            res.status(500).json({ message: err.message });
+        });
+});
+
+/**
+ * Modify a list of tickets purchased
+ */
+router.post('/resell', mid.checkFieldsSell, async (req, res) => {
+    await ticket.resell(req.body)
+        .then(data => res.json({
+            message: 'Reventa registrada correctamente',
+            content: data
+        }))
+        .catch(err => {
+            if (err.status) {
+                res.status(err.status).json({ message: err.message });
+            }
+            res.status(500).json({ message: err.message });
         });
 });
 

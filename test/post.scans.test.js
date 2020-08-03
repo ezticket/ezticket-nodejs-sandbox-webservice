@@ -6,10 +6,10 @@ const url = 'http://localhost:3000/api/v1/tickets';
 
 chai.use(chaiHttp);
 
-describe('Operation scan: ', () => {
+describe('POST scans', () => {
     it('Save a scan successfully', (done) => {
         chai.request(url)
-            .post('/eqr4t34sfdsfsgf/scan')
+            .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
                 // console.log(res.body);
@@ -19,7 +19,7 @@ describe('Operation scan: ', () => {
     });
     it('Parameters are missing: id', (done) => {
         chai.request(url)
-            .post('/eqr4t34sfdsfsgf/scan')
+            .post('/eqr4t34sfdsfsgf/scans')
             .send({ name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
                 expect(res).to.have.status(400);
@@ -28,7 +28,7 @@ describe('Operation scan: ', () => {
     });
     it('Parameters are missing: name', (done) => {
         chai.request(url)
-            .post('/eqr4t34sfdsfsgf/scan')
+            .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, createdAt: '01-01-2020' })
             .end(function (err, res) {
                 expect(res).to.have.status(400);
@@ -37,7 +37,7 @@ describe('Operation scan: ', () => {
     });
     it('Parameters are missing: createdAt', (done) => {
         chai.request(url)
-            .post('/eqr4t34sfdsfsgf/scan')
+            .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, name: 'Drink' })
             .end(function (err, res) {
                 expect(res).to.have.status(400);

@@ -7,4 +7,20 @@ function scan (ticketId, newScan) {
     });
 }
 
-module.exports = { scan };
+function sell (tickets) {
+    return new Promise((resolve, reject) => {
+        resolve(tickets);
+    });
+}
+
+function resell (tickets) {
+    return new Promise((resolve, reject) => {
+        resolve(tickets);
+    });
+}
+
+module.exports = {
+    scan,
+    sell,
+    resell
+};
