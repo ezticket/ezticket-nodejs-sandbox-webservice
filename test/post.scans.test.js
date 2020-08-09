@@ -1,14 +1,15 @@
-const assert = require('assert');
+const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = require('chai').expect;
 const url = 'http://localhost:3000/api/v1/tickets';
 
 chai.use(chaiHttp);
+requester = chai.request.agent(url);
 
 describe('POST scans', () => {
     it('Save a scan successfully', (done) => {
-        chai.request(url)
+        requester
             .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
@@ -18,7 +19,7 @@ describe('POST scans', () => {
             });
     });
     it('Parameters are missing: id', (done) => {
-        chai.request(url)
+        requester
             .post('/eqr4t34sfdsfsgf/scans')
             .send({ name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
@@ -27,7 +28,7 @@ describe('POST scans', () => {
             });
     });
     it('Parameters are missing: name', (done) => {
-        chai.request(url)
+        requester
             .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, createdAt: '01-01-2020' })
             .end(function (err, res) {
@@ -36,7 +37,7 @@ describe('POST scans', () => {
             });
     });
     it('Parameters are missing: createdAt', (done) => {
-        chai.request(url)
+        requester
             .post('/eqr4t34sfdsfsgf/scans')
             .send({ id: 2, name: 'Drink' })
             .end(function (err, res) {
