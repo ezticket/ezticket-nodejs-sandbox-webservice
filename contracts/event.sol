@@ -3,11 +3,10 @@ pragma experimental ABIEncoderV2;
 
 contract Event { 
     string eventName; 
-    address owner; 
+    address public owner; 
     uint totalSales; 
      
-    constructor(string memory newEventName) public { 
-        eventName = newEventName; 
+    constructor() public { 
         owner = msg.sender; 
         totalSales = 0; 
     } 
@@ -37,7 +36,7 @@ contract Event {
         _; 
     } 
      
-    function addTicket(uint ticketId, string memory name, string memory today) public isOwner{ 
+    function addTicket(uint ticketId, string memory name, string memory today) public isOwner returns (bool){ 
         Ticket memory newTicket = Ticket({ 
             ticketid: ticketId 
         }); 
@@ -47,8 +46,10 @@ contract Event {
             name: name, 
             date: today 
         }); 
-        purchasers[ticketId].push(purchaser); 
-        totalSales++; 
+        purchasers[ticketId].push(purchaser);
+        uint currentSales = totalSales;
+        totalSales++;
+        return currentSales < totalSales;
     } 
 
     function getTotalSales() public isOwner view returns (uint){ 
