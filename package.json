@@ -5,8 +5,24 @@
   "private": false,
   "scripts": {
     "start": "node app.js",
-    "test": "mocha",
+    "test": "mocha --timeout 10000 --exit",
+    "coverage": "nyc --reporter=text --reporter=html npm test",
     "generate-docs": "jsdoc -c .jsdoc.json"
+  },
+  "nyc": {
+    "_comment": "Purpose of this part: to do code coverage within Mocha/Chai using Istanbul",
+    "register": "babel-register",
+    "include": [
+      "**/*.js",
+      "./*.js"
+    ],
+    "exclude": [
+      "**/node_modules/**",
+      "**/test/**",
+      "**/coverage/**",
+      "**/docs/**"
+    ],
+    "all": true
   },
   "dependencies": {
     "docdash": "^1.2.0",
@@ -20,6 +36,7 @@
     "jsdoc": "^3.6.5",
     "mocha": "^8.0.1",
     "morgan": "~1.9.1",
+    "nyc": "^15.1.0",
     "standardx": "^5.0.0"
   }
 }

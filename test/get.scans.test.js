@@ -1,14 +1,15 @@
-const assert = require('assert');
+const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = require('chai').expect;
 const url = 'http://localhost:3000/api/v1/tickets';
 
 chai.use(chaiHttp);
+requester = chai.request.agent(url);
 
 describe('GET scans', () => {
     it('Get all the scans of the ticket', (done) => {
-        chai.request(url)
+        requester
             .get('/eqr4t34sfdsfsgf/scans')
             .end(function (err, res) {
                 // console.log(res.body)

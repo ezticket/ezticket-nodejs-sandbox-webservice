@@ -1,4 +1,4 @@
-const assert = require('assert');
+const app = require('../app');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const expect = require('chai').expect;
@@ -8,10 +8,11 @@ const sells = [{ ticketId: 'DTHDGNBVBDGG', buyerId: 'SDTHETHBDFB', scanLimit: 10
     { ticketId: 'THEDBDFBVBV', buyerId: 'SFHBSGBSFBXDVB', scanLimit: 15 }];
 
 chai.use(chaiHttp);
+requester = chai.request.agent(url);
 
 describe('POST resell', () => {
     it('Save a resell successfully', (done) => {
-        chai.request(url)
+        requester
             .post('/resell')
             .send(sells)
             .end(function (err, res) {
@@ -21,7 +22,7 @@ describe('POST resell', () => {
             });
     });
     it('Parameter is not an array', (done) => {
-        chai.request(url)
+        requester
             .post('/resell')
             .send({ name: 'Drink', createdAt: '01-01-2020' })
             .end(function (err, res) {
