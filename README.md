@@ -34,7 +34,33 @@ configuración inicial de la herramienta:
 jsdoc -c .jsdoc.json
 ```
 
-### Módulo de log.
+### Variables de Entorno ###
+
+[Las variables de entorno sirven para definir parámetros sencillos de configuración de los programas, de modo que éstos puedan ejecutarse en diferentes ambientes sin necesidad de modificar el código fuente de un script.][1]
+
+[1]: https://desarrolloweb.com/articulos/variables-entorno-nodejs.html
+
+[Trabajar con variables de entorno es una excelente manera de configurar diferentes aspectos de su aplicación Node.js. Muchos hosts en la nube (Heroku, Azure, AWS, now.sh, etc.) y módulos Node.js usan variables de entorno. Los hosts, por ejemplo, establecerán una variable PORT que especifica en qué puerto debe escuchar el servidor para que funcione correctamente. Los módulos pueden tener diferentes comportamientos (como el registro) según el valor de la variable NODE_ENV.
+][2]
+
+[2]: https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html
+
+### Manejar variables de entorno con dotenv ##
+
+Utilizamos para manejar las variables de entorno la extension: 'DotENV'
+
+[![DotENV Extension](https://mikestead.gallerycdn.vsassets.io/extensions/mikestead/dotenv/1.0.1/1519894859412/Microsoft.VisualStudio.Services.Icons.Default "VSCode .env syntax highlighting")][3]
+
+[3]: https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv
+
++ [Manejar variables de entorno con dotenv en Nodejs - Tutorial](https://www.youtube.com/watch?v=SFNfvLb1pQQ)
++ [Variables de Entorno en Node.js | dotenv & crossenv](https://www.youtube.com/watch?v=U6st9-lNUyY)
++ [Link DotENV Extension](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
+
+
+
+
+### Módulo de log. ###
 
 Las opciones más populares a tener en cuenta fueron:
 
