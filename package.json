@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@truffle/hdwallet-provider": "^1.0.40",
+    "console-table-printer": "^2.3.11",
     "docdash": "^1.2.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
@@ -36,6 +37,7 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "jsdoc": "^3.6.5",
     "mocha": "^8.0.1",
     "morgan": "~1.9.1",
