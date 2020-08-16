@@ -58,8 +58,6 @@ Utilizamos para manejar las variables de entorno la extension: 'DotENV'
 + [Link DotENV Extension](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 
 
-
-
 ### Módulo de log. ###
 
 Las opciones más populares a tener en cuenta fueron:
