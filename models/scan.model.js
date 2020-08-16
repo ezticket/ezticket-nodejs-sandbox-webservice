@@ -1,17 +1,17 @@
-var scans = require('../data/scans.json');
-const helper = require('../helpers/helper.js');
+var scans = require("../data/scans.json");
+const helper = require("../helpers/helper.js");
+const eventContract = require("../models/contract.model");
+const contract = new eventContract().getInstance();
 
-function getScans (ticketId) {
-    return new Promise((resolve, reject) => {
-        if (scans.length === 0) {
-            reject({
-                message: 'No scans available',
-                status: 202
-            });
-        }
+async function getScans(ticketId) {
+  console.log("Getting scans for: ", ticketId);
+  const scans = await contract.methods
+    .getScans(ticketId)
+    .call({ from: process.env.ADDRESS });
 
-        resolve(scans);
-    });
+  return new Promise((resolve, reject) => {
+    resolve(scans);
+  });
 }
 
 module.exports = { getScans };
