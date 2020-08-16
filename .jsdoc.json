@@ -2,7 +2,8 @@
     "source": {
         "includePattern": ".+\\.js(doc|x)?$",
         "include": [
-            "."
+            ".",
+            "contracts/"
         ],
         "exclude": [
             "node_modules"

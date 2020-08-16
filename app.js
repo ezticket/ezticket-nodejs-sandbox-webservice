@@ -73,7 +73,7 @@ app
 
     // render the error page
     res.status(err.status || 500);
-    res.json("err or");
+    res.json("error");
   })
   .listen(process.env.PORT || 3000);
 
