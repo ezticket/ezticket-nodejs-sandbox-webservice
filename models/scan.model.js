@@ -4,19 +4,12 @@ const eventContract = require("../models/contract.model");
 const contract = new eventContract().getInstance();
 
 async function getScans(ticketId) {
-  const newSale = await contract.methods
-    .getTotalSales()
+  console.log("Getting scans for: ", ticketId);
+  const scans = await contract.methods
+    .getScans(ticketId)
     .call({ from: process.env.ADDRESS });
-  console.log(newSale);
 
   return new Promise((resolve, reject) => {
-    if (scans.length === 0) {
-      reject({
-        message: "No scans available",
-        status: 202
-      });
-    }
-
     resolve(scans);
   });
 }

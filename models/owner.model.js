@@ -1,17 +1,17 @@
-var owners = require('../data/owners.json');
-const helper = require('../helpers/helper.js');
+var owners = require("../data/owners.json");
+const helper = require("../helpers/helper.js");
+const eventContract = require("../models/contract.model");
+const contract = new eventContract().getInstance();
 
-function getOwners (ticketId) {
-    return new Promise((resolve, reject) => {
-        if (owners.length === 0) {
-            reject({
-                message: 'No owners available',
-                status: 202
-            });
-        }
+async function getOwners(ticketId) {
+  console.log("Getting owners for: ", ticketId);
+  const owners = await contract.methods
+    .getPurchasers(ticketId)
+    .call({ from: process.env.ADDRESS });
 
-        resolve(owners);
-    });
+  return new Promise((resolve, reject) => {
+    resolve(owners);
+  });
 }
 
 module.exports = { getOwners };
