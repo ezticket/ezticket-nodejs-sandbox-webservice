@@ -20,7 +20,13 @@ function loadEnvironment() {
 }
 
 printEnvironment = () => {
-  const environmentList = ["ENV", "ADDRESS", "CONTRACT_ADDRESS", "PRIVATE_KEY"];
+  const environmentList = [
+    "ENV",
+    "ADDRESS",
+    "CONTRACT_ADDRESS",
+    "PRIVATE_KEY",
+    "CONTRACT_NET"
+  ];
 
   try {
     const myTable = new Table({
