@@ -12,31 +12,31 @@ contract Event {
     } 
 
     struct Scan { 
-        uint ticketid; 
+        string ticketid; 
         string name; 
         string date; 
     } 
      
     struct Ticket { 
-        uint ticketid; 
+        string ticketid; 
     } 
      
     struct User { 
-        uint ticketid; 
+        string ticketid; 
         string name; 
         string date; 
     } 
      
-    mapping(uint => Ticket) public tickets; 
-    mapping(uint => User[]) public purchasers; 
-    mapping(uint => Scan[]) public scans; 
+    mapping(string => Ticket) public tickets; 
+    mapping(string => User[]) public purchasers; 
+    mapping(string => Scan[]) public scans; 
      
     modifier isOwner() { 
         require(msg.sender == owner); 
         _; 
     } 
      
-    function addTicket(uint ticketId, string memory name, string memory today) public isOwner returns (bool){ 
+    function addTicket(string memory ticketId, string memory name, string memory today) public isOwner returns (bool){ 
         Ticket memory newTicket = Ticket({ 
             ticketid: ticketId 
         }); 
@@ -56,7 +56,7 @@ contract Event {
         return totalSales; 
     } 
      
-    function addScan(uint ticketId, string memory scanName, string memory today) public isOwner { 
+    function addScan(string memory ticketId, string memory scanName, string memory today) public isOwner { 
         Scan memory newScan = Scan({ 
             ticketid: ticketId, 
             name: scanName, 
@@ -65,11 +65,11 @@ contract Event {
         scans[ticketId].push(newScan); 
     }
 
-    function getScans(uint ticketId) public isOwner view returns (Scan[] memory){ 
+    function getScans(string memory ticketId) public isOwner view returns (Scan[] memory){ 
         return scans[ticketId]; 
     } 
 
-    function addPurchasers(uint ticketId, string memory name, string memory today) public isOwner { 
+    function addPurchasers(string memory ticketId, string memory name, string memory today) public isOwner { 
         User memory purchaser = User({ 
             ticketid: ticketId, 
             name: name, 
@@ -78,7 +78,7 @@ contract Event {
         purchasers[ticketId].push(purchaser); 
     } 
 
-    function getPurchasers(uint ticketId) public isOwner view returns (User[] memory){ 
+    function getPurchasers(string memory ticketId) public isOwner view returns (User[] memory){ 
         return purchasers[ticketId]; 
     } 
 }
