@@ -93,7 +93,7 @@ contract Event {
      * @param usersId value of the new owner of the ticket.
      * @param purchasedAt date of the ticket purchase.
      */
-    function addTicketLsit(string[] memory newTicketsId, string[] memory usersId, string[] memory purchasedAt) public isOwner returns (bool){ 
+    function addTicketList(string[] memory newTicketsId, string[] memory usersId, string[] memory purchasedAt) public isOwner returns (bool){ 
         uint currentSales = totalSales;
         uint ticketslength = newTicketsId.length;
         uint usersIdlength = usersId.length;
