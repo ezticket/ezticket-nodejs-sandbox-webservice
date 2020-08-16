@@ -7,40 +7,49 @@ pragma experimental ABIEncoderV2;
  */
 contract Event { 
     string public eventName; 
-    address public owner; 
+    address private owner; 
     uint public totalSales; 
-     
+    
     constructor() public { 
         owner = msg.sender; 
         totalSales = 0; 
-    } 
+    }
 
     struct Scan { 
         string ticketid; 
-        string name; 
-        string date; 
+        string scanDescription; 
+        string scannedAt; 
     } 
      
     struct Ticket { 
         string ticketid;
-        string purchaser;
-        bool isValue;
+        string ticketOwner;
+        uint ownerPosition;
     } 
      
     struct User { 
         string ticketid; 
-        string name; 
-        string date; 
+        string userid; 
+        string purchasedAt; 
     } 
      
-    mapping(string => Ticket) public tickets; 
-    mapping(string => User[]) public purchasers; 
-    mapping(string => Scan[]) public scans; 
+    mapping(string => Ticket) public mapTickets; 
+    mapping(string => User[]) public mapPurchasers; 
+    mapping(string => Scan[]) public mapScans; 
      
     modifier isOwner() { 
         require(msg.sender == owner); 
         _; 
     } 
+    
+    modifier ticketExist(string memory ticketId){
+        require(_ticketExist(ticketId));
+        _;
+    }
+    
+    function _ticketExist(string memory ticketId) private returns (bool){
+        return bytes(mapTickets[ticketId].ticketid).length != 0;
+    }
     
     /**
      * @dev setNewEventName value in if the title is empty this will set the new event name
@@ -52,41 +61,49 @@ contract Event {
         }
         eventName = newEventName;
     }
+    
+    /**
+     * @dev sell a new ticket for the event.
+     * @param newTicketId value of the ticket ids for the event.
+     * @param userId value of the new owner of the ticket.
+     * @param purchasedAt date of the ticket purchase.
+     */
+    function addTicket(string memory newTicketId, string memory userId, string memory purchasedAt) public isOwner returns (bool){ 
+            uint currentSales = totalSales;
+            if(_ticketExist(newTicketId)) {
+                revert();
+                return false;
+            }
+            Ticket memory newTicket = Ticket({ 
+                ticketid: newTicketId,
+                ticketOwner: userId,
+                ownerPosition: 0
+            }); 
+            mapTickets[newTicketId] = newTicket; 
+            
+            addPurchasers(newTicketId, userId, purchasedAt);
+            totalSales++;
+        return currentSales < totalSales;
+    } 
      
      
     /**
      * @dev sell a list of new tickets for the event.
      * @param newTicketsId value of the tickets ids for the event.
-     * @param names id value of the new owner of the ticket.
+     * @param usersId value of the new owner of the ticket.
      * @param purchasedAt date of the ticket purchase.
      */
-    function addTicket(string[] memory newTicketsId, string[] memory names, string[] memory purchasedAt) public isOwner returns (bool){ 
+    function addTicketLsit(string[] memory newTicketsId, string[] memory usersId, string[] memory purchasedAt) public isOwner returns (bool){ 
         uint currentSales = totalSales;
         uint ticketslength = newTicketsId.length;
-        uint nameslength = names.length;
+        uint usersIdlength = usersId.length;
         uint purchasedAtlength = purchasedAt.length;
-        if(purchasedAtlength != nameslength && nameslength != ticketslength) {
+        if(purchasedAtlength != usersIdlength && usersIdlength != ticketslength) {
                 revert();
                 return false;
         }
         for (uint i=0; i<ticketslength; i++) {
-            if(tickets[newTicketsId[i]].isValue) {
-                revert();
-                return false;
-            }
-            Ticket memory newTicket = Ticket({ 
-                ticketid: newTicketsId[i],
-                purchaser: names[i],
-                isValue: true
-            }); 
-            tickets[newTicketsId[i]] = newTicket; 
-            User memory purchaser = User({ 
-                ticketid: newTicketsId[i], 
-                name: names[i], 
-                date: purchasedAt[i] 
-            }); 
-            purchasers[newTicketsId[i]].push(purchaser);
-            totalSales++;
+            addTicket (newTicketsId[i], usersId[i], purchasedAt[i]);
         }
         return currentSales < totalSales;
     } 
@@ -104,18 +121,15 @@ contract Event {
      * @dev add a scan for the ticket.
      * @param ticketId value of the ticket id for the event.
      * @param scanName tiny description of the scan purpose for the ticket.
-     * @param purchasedAt date of the ticket scaned.
+     * @param scannedAt date of the ticket scaned.
      */
-    function addScan(string memory ticketId, string memory scanName, string memory purchasedAt) public isOwner returns (bool){ 
-        if (tickets[ticketId].isValue) {
-            revert();
-        }
+    function addScan(string memory ticketId, string memory scanName, string memory scannedAt) public isOwner ticketExist(ticketId) returns (bool){ 
         Scan memory newScan = Scan({ 
             ticketid: ticketId, 
-            name: scanName, 
-            date: purchasedAt 
+            scanDescription: scanName, 
+            scannedAt: scannedAt 
         }); 
-        scans[ticketId].push(newScan); 
+        mapScans[ticketId].push(newScan); 
         return true;
     }
 
@@ -124,28 +138,25 @@ contract Event {
      * @param ticketId value of the ticket id for the event.
      */
     function getScans(string memory ticketId) public isOwner view returns (Scan[] memory){ 
-        return scans[ticketId]; 
+        return mapScans[ticketId]; 
     } 
 
     /**
      * @dev add a new purchaser for the ticket.
      * @param ticketId value of the ticket id for the event.
-     * @param name id value of the new owner of the ticket.
+     * @param userid id value of the new owner of the ticket.
      * @param purchasedAt date of the ticket purchase.
      */
-    function addPurchasers(string memory ticketId, string memory name, string memory purchasedAt) public isOwner returns (bool){ 
-        if (tickets[ticketId].isValue) {
-            revert();
-        }
+    function addPurchasers(string memory ticketId, string memory userid, string memory purchasedAt) public isOwner ticketExist(ticketId) returns (bool){ 
         User memory purchaser = User({ 
             ticketid: ticketId, 
-            name: name, 
-            date: purchasedAt 
+            userid: userid, 
+            purchasedAt: purchasedAt 
         }); 
-        purchasers[ticketId].push(purchaser); 
-        tickets[ticketId].purchaser = name;
+        mapPurchasers[ticketId].push(purchaser); 
+        mapTickets[ticketId].ticketOwner = userid;
+        mapTickets[ticketId].ownerPosition = mapPurchasers[ticketId].length-1;
         return true;
-        
     } 
 
     /**
@@ -153,6 +164,6 @@ contract Event {
      * @param ticketId value of the ticket id for the event.
      */
     function getPurchasers(string memory ticketId) public isOwner view returns (User[] memory){ 
-        return purchasers[ticketId]; 
+        return mapPurchasers[ticketId]; 
     } 
 }
